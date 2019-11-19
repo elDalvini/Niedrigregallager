@@ -2,8 +2,11 @@
 import keyboard
 import RPi.GPIO as GPIO
 import time
+import lcddriver
 
 #from RpiMotorLib import RpiMotorlib
+
+lcd = lcddriver.lcd()
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(14,GPIO.OUT)
@@ -22,5 +25,6 @@ while 1:
                         x = ""
                 elif key == "+":
                         x = x[:-1]
-
+                lcd.clear()
+                lcd.display_string(x,0)
                 prevKey = key
