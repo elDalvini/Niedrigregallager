@@ -25,7 +25,12 @@ def input(title):
                     x += key
             elif key == "enter":
                 lcd.clear()
-                return(x)
+                if x != "":
+                    return(x)
+                else:
+                    lcd.display_string("Bitte gueltige",1)
+                    lcd.display_string("Zahl eingeben!",2)
+                    time.sleep(0.75)
             elif key == "+":
                     x = x[:-1]
             lcd.clear()
