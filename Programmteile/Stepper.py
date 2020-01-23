@@ -37,11 +37,12 @@ class Stepper:
             self.steps += (dir*2-1)
 
 mX = Stepper(19, 26, 0.002)
+mY = Stepper(6, 13, 0.002)
 
 mX.Step(50,1)
 print(str(mX.steps))
 time.sleep(0.25)
-mX.Step(50,1)
+mY.Step(50,1)
 print(str(mX.steps))
 time.sleep(0.25)
 mX.Step(25,0)
