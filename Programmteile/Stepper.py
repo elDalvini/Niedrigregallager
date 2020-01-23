@@ -17,15 +17,20 @@ class Stepper:
     steps = 0
     StepPin = 0
     DirPin = 0
+    EndPin = 0
     Delay = 0
 
-    def __init__(self, Step, Dir, StepDelay):
+
+    def __init__(self, Step, Dir, StepDelay, End = -1):
         self.steps = 0
         self.StepPin = Step
         self.DirPin = Dir
         self.Delay = StepDelay
+        self.EndPin = End
         GPIO.setup(self.StepPin, GPIO.OUT)
         GPIO.setup(self.DirPin, GPIO.OUT)
+        if self.EndPin != -1:
+            GPIO.setup(self.EndPin, GPIO.IN)
 
     def Step(self, steps, dir):
         GPIO.output(self.DirPin, dir)
@@ -41,14 +46,21 @@ class Stepper:
         if pos != self.steps:
             dir = not (pos < self.steps)
             self.Step(abs(self.steps - pos), dir)
+
+    def Home(self,dir):
+        if self.EndPin != -1:
+            while GPIO.input(self.EndPin):
+                self.Step(1,dir)
+
         
 
-mX = Stepper(19, 26, 0.005)
+mX = Stepper(19, 26, 0.005, 5)
 mY = Stepper(6, 13, 0.005)
 
 mX.Step(150,1)
-time.sleep(0.5)
+time.sleep(0.25)
 mX.Move(75)
+time.sleep(0.5)
 
 #MovX = threading.Thread(target = mX.Step , args=(500,1))
 #MovY = threading.Thread(target = mY.Step, args = (100,0))
