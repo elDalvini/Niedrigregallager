@@ -61,6 +61,7 @@ mX.Step(150,1)
 time.sleep(0.25)
 mX.Move(75)
 time.sleep(0.5)
+mX.Home(0)
 
 #MovX = threading.Thread(target = mX.Step , args=(500,1))
 #MovY = threading.Thread(target = mY.Step, args = (100,0))
