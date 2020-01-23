@@ -33,7 +33,7 @@ class Stepper:
             GPIO.output(self.StepPin,0)
             time.sleep(self.Delay/2)
 
-mX = Stepper(19, 26, 0.005)
+mX = Stepper(19, 26, 0.0005)
 
 mX.Step(50,1)
 
