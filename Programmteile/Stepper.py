@@ -19,7 +19,7 @@ class Stepper:
     Delay = 0
 
     def __init__(self, Step, Dir, StepDelay):
-        steps = 0
+        self.steps = 0
         self.StepPin = Step
         self.DirPin = Dir
         self.Delay = StepDelay
@@ -34,8 +34,11 @@ class Stepper:
             GPIO.output(self.StepPin,0)
             time.sleep(self.Delay/2)
 
+            self.steps += (dir*2-1)
+
 mX = Stepper(19, 26, 0.001)
 
 mX.Step(50,1)
+print(str(mX.steps))
 
 
