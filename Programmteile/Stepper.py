@@ -62,12 +62,12 @@ mX = Stepper(19, 26, 0.005, 5)
 mY = Stepper(6, 13, 0.005)
 
 ###########Move and Home example#####
-#
-#mX.Step(150,1)
-#time.sleep(0.25)
-#mX.Move(75)
-#time.sleep(0.5)
-#mX.Home(0)
+
+mX.Step(150,1)
+time.sleep(0.25)
+mX.Move(75)
+time.sleep(0.5)
+mX.Home(0)
 
 
 ############Threading example########
