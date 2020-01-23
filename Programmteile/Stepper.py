@@ -37,18 +37,28 @@ class Stepper:
 
             self.steps += (dir*2-1)
 
+    def Move(self, pos):
+        if pos != self.step:
+            dir = (pos < self.step)
+            self.Step(abs(self.step - pos), dir)
+        
+
 mX = Stepper(19, 26, 0.005)
 mY = Stepper(6, 13, 0.005)
 
-MovX = threading.Thread(target = mX.Step , args=(500,1))
-MovY = threading.Thread(target = mY.Step, args = (100,0))
-MovX.start()
-time.sleep(1)
-MovY.start()
-MovY.join()
-print("Y done")
-MovX.join()
-print("X done")
+mX.Step(150,1)
+time.sleep(0.5)
+mX.Move(75)
+
+#MovX = threading.Thread(target = mX.Step , args=(500,1))
+#MovY = threading.Thread(target = mY.Step, args = (100,0))
+#MovX.start()
+#time.sleep(1)
+#MovY.start()
+#MovY.join()
+#print("Y done")
+#MovX.join()
+#print("X done")
 
 
 #mX.Step(50,1)
