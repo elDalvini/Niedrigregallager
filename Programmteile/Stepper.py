@@ -40,5 +40,9 @@ mX = Stepper(19, 26, 0.001)
 
 mX.Step(50,1)
 print(str(mX.steps))
+mX.Step(50,1)
+print(str(mX.steps))
+mX.Step(25,0)
+print(str(mX.steps))
 
 
