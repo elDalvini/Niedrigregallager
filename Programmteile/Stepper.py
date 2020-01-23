@@ -8,6 +8,7 @@
 import RPi.GPIO as GPIO
 import time
 
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 
@@ -33,7 +34,7 @@ class Stepper:
             GPIO.output(self.StepPin,0)
             time.sleep(self.Delay/2)
 
-mX = Stepper(19, 26, 0.0005)
+mX = Stepper(19, 26, 0.001)
 
 mX.Step(50,1)
 
