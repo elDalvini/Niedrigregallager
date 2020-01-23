@@ -38,9 +38,9 @@ class Stepper:
             self.steps += (dir*2-1)
 
     def Move(self, pos):
-        if pos != self.step:
-            dir = (pos < self.step)
-            self.Step(abs(self.step - pos), dir)
+        if pos != self.steps:
+            dir = (pos < self.steps)
+            self.Step(abs(self.steps - pos), dir)
         
 
 mX = Stepper(19, 26, 0.005)
