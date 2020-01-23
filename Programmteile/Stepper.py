@@ -27,7 +27,7 @@ class Stepper:
         GPIO.setup(self.DirPin, GPIO.OUT)
 
     def Step(self, steps, dir):
-        GPIO.output(self.DirPin, 1)
+        GPIO.output(self.DirPin, dir)
         for i in range(steps):
             GPIO.output(self.StepPin,1)
             time.sleep(self.Delay/2)
