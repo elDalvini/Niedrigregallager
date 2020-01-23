@@ -19,19 +19,19 @@ class Stepper:
 
     def __init__(self, Step, Dir, StepDelay):
         steps = 0
-        StepPin = Step
-        DirPin = Dir
-        Delay = StepDelay
-        GPIO.setup(StepPin, GPIO.OUT)
-        GPIO.setup(DirPin, GPIO.OUT)
+        self.StepPin = Step
+        self.DirPin = Dir
+        self.Delay = StepDelay
+        GPIO.setup(self.StepPin, GPIO.OUT)
+        GPIO.setup(self.DirPin, GPIO.OUT)
 
     def Step(self, steps, dir):
-        GPIO.output(DirPin, 1)
+        GPIO.output(self.DirPin, 1)
         for i in range(steps):
-            GPIO.output(StepPin,1)
-            time.sleep(Delay/2)
-            GPIO.output(StepPin,0)
-            time.sleep(Delay/2)
+            GPIO.output(self.StepPin,1)
+            time.sleep(self.Delay/2)
+            GPIO.output(self.StepPin,0)
+            time.sleep(self.Delay/2)
 
 mX = Stepper(19, 26, 0.005)
 
