@@ -15,14 +15,22 @@ class Stepper:
     steps = 0
     StepPin = 0
     DirPin = 0
+    Delay = 0
 
-    def __init__(Step, Dir):
+    def __init__(Step, Dir, StepDelay):
         steps = 0
         StepPin = Step
         DirPin = Dir
+        Delay = StepDelay
         GPIO.setup(StepPin, GPIO.OUT)
         GPIO.setup(DirPin, GPIO.OUT)
 
     def Step(steps, dir, ):
-        GPIO.output(DirPin, )
+        GPIO.output(DirPin, 1)
+        for i in range(steps):
+            GPIO.output(StepPin,1)
+            time.sleep(Delay/2)
+            GPIO.output(StepPin,0)
+            time.sleep(Delay/2)
+
 
