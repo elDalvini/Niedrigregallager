@@ -39,7 +39,7 @@ class Stepper:
 
     def Move(self, pos):
         if pos != self.steps:
-            dir = (pos < self.steps)
+            dir = not (pos < self.steps)
             self.Step(abs(self.steps - pos), dir)
         
 
