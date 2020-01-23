@@ -52,6 +52,8 @@ class Stepper:
             while GPIO.input(self.EndPin):
                 self.Step(1,dir)
 
+            self.steps = 0
+
         
 
 mX = Stepper(19, 26, 0.005, 5)
