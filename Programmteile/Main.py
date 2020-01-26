@@ -46,6 +46,7 @@ def Pickup():
 	pass
 
 def ManMove(key):
+	print("Manual Mode")
 	while True:
 		key = keyboard.read_key()
 		if key == "up":
