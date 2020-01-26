@@ -59,8 +59,12 @@ def ManMove(keypress):
 		mY.Step(1,1)
 	elif key == "right":
 		mY.Step(1,0)
-	elif key == "x":
-		return()
+	elif key == "page up":
+		mZ.Step(1,1)
+	elif key == "page down":
+		mZ.Step(1,0)
+
+	#output current position
 	print("X: "+str(mX.steps)+"\t Y: "+str(mY.steps)+"\t Z: "+str(mZ.steps))
 
 
@@ -68,6 +72,8 @@ keyboard.on_press_key("up", ManMove)
 keyboard.on_press_key("down", ManMove)
 keyboard.on_press_key("left", ManMove)
 keyboard.on_press_key("right", ManMove)
+keyboard.on_press_key("page up", ManMove)
+keyboard.on_press_key("page down", ManMove)
 
 
 MoveXY(200,200)
