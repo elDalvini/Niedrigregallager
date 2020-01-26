@@ -77,7 +77,7 @@ keyboard.on_press_key("page down", ManMove)
 
 
 MoveXY(200,200)
-MoveXY(1,1)
+#MoveXY(1,1)
 
 while True:
     pass
