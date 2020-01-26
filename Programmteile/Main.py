@@ -47,8 +47,8 @@ def Pickup():
 
 def ManMove(keypress):
 	print("Manual Mode")
-	print(key)
 	key = keypress.name
+	print(key)
 
 	if key == "up":
 		mX.Step(1,1)
