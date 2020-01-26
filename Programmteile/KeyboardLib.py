@@ -1,3 +1,8 @@
+import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
+import time
+import keyboard
+
+
 def KBinput(title, lcd):   #gets a number by keyboard input, live input and title are displayed on the LCD.
     lcd.display_string(title,1) #write title to first line of LCD
 
