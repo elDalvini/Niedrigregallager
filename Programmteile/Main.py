@@ -45,6 +45,7 @@ def MoveXY(x,y):	#Moves the carrier to a specific point
 def Pickup():
 	pass
 
+#Move 
 def ManMove(keypress):
 	#print("Manual Mode")
 	key = keypress.name
@@ -60,6 +61,7 @@ def ManMove(keypress):
 		mY.Step(1,0)
 	elif key == "x":
 		return()
+	print("X: "+str(mX.steps)+"\t Y: "+str(mY.steps)+"\t Z: "+str(mZ.steps))
 
 
 keyboard.on_press_key("up", ManMove)
