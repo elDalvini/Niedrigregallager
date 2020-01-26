@@ -12,4 +12,4 @@ GPIO.setup(14,GPIO.OUT)
 
 
 
-print(input("Eingabe:"))
+print(KBinput("Eingabe:", lcd))

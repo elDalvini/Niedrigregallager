@@ -1,4 +1,4 @@
-def input(title, lcd):   #gets a number by keyboard input, live input and title are displayed on the LCD.
+def KBinput(title, lcd):   #gets a number by keyboard input, live input and title are displayed on the LCD.
     lcd.display_string(title,1) #write title to first line of LCD
 
     #Variable definition
