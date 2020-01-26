@@ -69,6 +69,7 @@ keyboard.on_press_key("right", ManMove)
 
 
 MoveXY(200,200)
+MoveXY(0,0)
 
 while True:
     pass
