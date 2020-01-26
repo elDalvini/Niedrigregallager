@@ -45,10 +45,11 @@ def MoveXY(x,y):	#Moves the carrier to a specific point
 def Pickup():
 	pass
 
-def ManMove(key):
+def ManMove(ky):
 	print("Manual Mode")
 	while True:
 		key = keyboard.read_key()
+		print(key)
 		if key == "up":
 			mX.Step(1,1)
 		elif key == "down":
