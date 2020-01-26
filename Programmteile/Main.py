@@ -45,7 +45,7 @@ def MoveXY(x,y):	#Moves the carrier to a specific point
 def Pickup():
 	pass
 
-#Move 
+#Move all axis manually if an arrow key or page up/down is pressed
 def ManMove(keypress):
 	#print("Manual Mode")
 	key = keypress.name
