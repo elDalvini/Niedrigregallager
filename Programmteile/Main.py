@@ -61,12 +61,13 @@ def ManMove(key):
 
 		time.sleep(0.05)
 
-keyboard.hook_key("m",ManMove)
+keyboard.on_press_key("m",ManMove)
 
 
 MoveXY(200,200)
 
-
+while True:
+    pass
 	
 
 
