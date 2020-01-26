@@ -61,7 +61,6 @@ def ManMove(keypress):
 	elif key == "x":
 		return()
 
-	time.sleep(0.05)
 
 keyboard.on_press_key("up", ManMove)
 
