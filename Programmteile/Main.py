@@ -27,12 +27,12 @@ def MoveXY(x,y):
 	if x == 0:
 	    MovX = threading.Thread(target = mX.Home, args = (0))
 	else:
-		MovX = threading.Thread(target = mX.Move, args = (x))
+		MovX = threading.Thread(target = mX.Move, args = (x,))
 
 	if y == 0:
 	    MovY = threading.Thread(target = mY.Home, args = (0))
 	else:
-		MovY = threading.Thread(target = mY.Move, args = (y))
+		MovY = threading.Thread(target = mY.Move, args = (y,))
 	MovX.start()
 	MovY.start()
 	MovX.join()
