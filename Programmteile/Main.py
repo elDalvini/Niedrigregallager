@@ -27,12 +27,12 @@ mZ = Stepper(16, 20, 0.01, 18)
 
 def MoveXY(x,y):	#Moves the carrier to a specific point
 	if x == 0:	#whether to use Home() or Move()
-	    MovX = threading.Thread(target = mX.Home, args = (0))
+	    MovX = threading.Thread(target = mX.Home, args = (0,))
 	else:
 		MovX = threading.Thread(target = mX.Move, args = (x,))
 
 	if y == 0:	#whether to use Home() or Move()
-	    MovY = threading.Thread(target = mY.Home, args = (0))
+	    MovY = threading.Thread(target = mY.Home, args = (0,))
 	else:
 		MovY = threading.Thread(target = mY.Move, args = (y,))
 
