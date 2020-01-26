@@ -63,7 +63,7 @@ def ManMove(ky):
 
 		time.sleep(0.05)
 
-keyboard.on_press_key("m",ManMove)
+keyboard.on_press_key("up",mX.Step(1,1))
 
 
 MoveXY(200,200)
