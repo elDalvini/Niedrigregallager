@@ -66,8 +66,7 @@ keyboard.hook_key("m",ManMove)
 
 MoveXY(200,200)
 
-while True:
-    pass
+
 	
 
 
