@@ -30,8 +30,10 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
                     time.sleep(0.75)
 
             elif key == "+":        #the '+'-Key is used as backspace --> remove last character from result
-                    x = x[:-1]
+                x = x[:-1]
 
+            elif key == "num lock":
+                return(-1)
             #Update LCD
             lcd.clear()
             lcd.display_string(title,1)
