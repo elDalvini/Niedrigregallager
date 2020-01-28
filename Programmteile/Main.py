@@ -38,10 +38,7 @@ mX = Stepper(XSTEP, XDIR, 0.005, XH)
 mY = Stepper(YSTEP, YDIR, 0.005, YH)
 mZ = Stepper(ZSTEP, ZDIR, 0.01, ZH)
 
-#Home all axis
-#mX.Home(0)
-#mY.Home(0)
-#mZ.Home(0)
+
 
 def MoveXY(x,y):	#Moves the carrier to a specific point
 	if x == 0:	#whether to use Home() or Move()
@@ -93,41 +90,70 @@ def ManMove(keypress):
 	#output current position
 	print("X: "+str(mX.steps)+"\t Y: "+str(mY.steps)+"\t Z: "+str(mZ.steps))
 
-#attach ManMove to arrow keys
-keyboard.on_press_key("up", ManMove)
-keyboard.on_press_key("down", ManMove)
-keyboard.on_press_key("left", ManMove)
-keyboard.on_press_key("right", ManMove)
-keyboard.on_press_key("page up", ManMove)
-keyboard.on_press_key("page down", ManMove)
+def hookKeys():
+    #attach ManMove to arrow keys
+    keyboard.on_press_key("up", ManMove)
+    keyboard.on_press_key("down", ManMove)
+    keyboard.on_press_key("left", ManMove)
+    keyboard.on_press_key("right", ManMove)
+    keyboard.on_press_key("page up", ManMove)
+    keyboard.on_press_key("page down", ManMove)
+    keyboard.on_press_key("/", Input)
+    keyboard.on_press_key("*", Output)
+
+def Input(k):            
+    keyboard.unhook_all()
+    while True:
+        if GPIO.input(INP) == 0:
+            number = KBinput("Eingabe: ")
+            if number == -1:
+                break
+            mycursor.execute('SELECT x,y FROM store WHERE number = -1')
+            coords = mycursor.fetchall()
+            MoveXY(0,0)
+            Pickup()
+            MoveXY(coords[0][0], coords[0][1])
+            Place()
+            MoveXY(0,0)
+        else:
+            lcd.clear()
+            lcd.display_string("Geben Sie eine Box ein!",1)
+            if keyboard.is_pressed("num lock"):
+                break
+    hookKeys()
+
+
+def Output():
+    keyboard.unhook_all()
+    while True:
+        if GPIO.input(INP):
+            number = KBinput("Ausgabe: ")
+            if number == -1:
+                break
+            mycursor.execute('SELECT x,y FROM store WHERE number ='+str(number))
+            coords = mycursor.fetchall()
+            MoveXY(coords[0][0], coords[0][1])
+            Pickup()
+            MoveXY(0,0)
+            Place()
+        else:
+            lcd.clear()
+            lcd.display_string("Leeren Sie die Ausgabebox!",1)
+            if keyboard.is_pressed("num lock"):
+                break
+    hookKeys()
+
+
+#Home all axis
+mX.Home(0)
+mY.Home(0)
+mZ.Home(0)
+
+hookKeys()
+
 
 while True:
-    if GPIO.input(INP) == 0:    #Box inserted
-        number = KBinput("Eingabe: ")
-        if number == -1:
-            break
-        mycursor.execute('SELECT x,y FROM store WHERE number = -1')
-        coords = mycursor.fetchall()
-        Pickup()
-        MoveXY(coords[0][0], coords[0][1])
-        Place()
-        MoveXY(0,0)
-    else:
-        number = KBinput("Ausgabe: ")
-        if number == -1:
-            break
-        mycursor.execute('SELECT x,y FROM store WHERE number ='+str(number))
-        coords = mycursor.fetchall()
-        MoveXY(coords[0][0], coords[0][1])
-        Pickup()
-        MoveXY(0,0)
-        Place()
-
-
-
-
-MoveXY(200,200)
-#MoveXY(1,1)
+    pass
 
 
 
