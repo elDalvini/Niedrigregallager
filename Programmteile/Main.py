@@ -100,6 +100,7 @@ def hookKeys():
     keyboard.on_press_key("page down", ManMove)
     keyboard.on_press_key("÷", Input)
     keyboard.on_press_key("×", Output)
+    keyboard.on_press_key("q", HomeAll)
 
 def Input(k):            
     keyboard.unhook_all()
@@ -143,12 +144,14 @@ def Output():
                 break
     hookKeys()
 
+def HomeAll(k=True):
+    #Home all axis
+    mX.Home(0)
+    mY.Home(0)
+    mZ.Home(0)
 
-#Home all axis
-mX.Home(0)
-mY.Home(0)
-mZ.Home(0)
 
+HomeAll()
 hookKeys()
 
 
