@@ -98,8 +98,8 @@ def hookKeys():
     keyboard.on_press_key("right", ManMove)
     keyboard.on_press_key("page up", ManMove)
     keyboard.on_press_key("page down", ManMove)
-    keyboard.on_press_key("/", Input)
-    keyboard.on_press_key("*", Output)
+    keyboard.on_press_key("÷", Input)
+    keyboard.on_press_key("×", Output)
 
 def Input(k):            
     keyboard.unhook_all()
