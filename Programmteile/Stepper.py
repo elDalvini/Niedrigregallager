@@ -47,7 +47,7 @@ class Stepper:
     def Home(self,dir):
         if self.EndPin != -1:   #do nothing if no end switch is connected
             #move one step at a time until the end switch is pressed
-            while GPIO.input(self.EndPin):
+            while not GPIO.input(self.EndPin):
                 self.Step(1,dir)
 
             self.steps = 0  #set current position to zero
