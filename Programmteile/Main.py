@@ -9,8 +9,8 @@ from KeyboardInput import *
 #import mysql.connector
 
 #mysql connection:
-#mydb = mysql.connector.connect(host = "localhost", user = "admin", passwd = "nWd3cOhlXXGbV4i9V7yJ", database = "rapla")
-#mycursor = mydb.cursor()
+mydb = mysql.connector.connect(host = "localhost", user = "sManager", passwd = "root", database = "niedrigregallager")
+mycursor = mydb.cursor()
 
 #GPIO Pins
 XH = 17
@@ -109,7 +109,7 @@ def Input(k):
             number = KBinput("Eingabe: ")
             if number == -1:
                 break
-            mycursor.execute('SELECT x,y FROM store WHERE number = -1')
+            mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
             coords = mycursor.fetchall()
             MoveXY(0,0)
             Pickup()
@@ -131,7 +131,7 @@ def Output():
             number = KBinput("Ausgabe: ")
             if number == -1:
                 break
-            mycursor.execute('SELECT x,y FROM store WHERE number ='+str(number))
+            mycursor.execute('SELECT x,y FROM store WHERE contents ='+str(number))
             coords = mycursor.fetchall()
             MoveXY(coords[0][0], coords[0][1])
             Pickup()
