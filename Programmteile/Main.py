@@ -6,11 +6,11 @@ from Stepper import *
 import keyboard
 import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
 from KeyboardInput import *
-import mysql.connector
+#import mysql.connector
 
 #mysql connection:
-mydb = mysql.connector.connect(host = "localhost", user = "admin", passwd = "nWd3cOhlXXGbV4i9V7yJ", database = "rapla")
-mycursor = mydb.cursor()
+#mydb = mysql.connector.connect(host = "localhost", user = "admin", passwd = "nWd3cOhlXXGbV4i9V7yJ", database = "rapla")
+#mycursor = mydb.cursor()
 
 #GPIO Pins
 XH = 17
