@@ -153,7 +153,7 @@ def HomeAll(k=True):
 
 HomeAll()
 hookKeys()
-MoveXY(200, 200)
+MoveXY(800, 800)
 
 
 while True:
