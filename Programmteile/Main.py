@@ -19,7 +19,7 @@ ZH = 22
 INP = 4
 
 XDIR = 19
-XStep = 26
+XSTEP = 26
 YDIR = 6
 YSTEP = 13
 ZDIR = 10
