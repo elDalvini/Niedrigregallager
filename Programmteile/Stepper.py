@@ -63,8 +63,8 @@ class Stepper:
 
         #pulse STEP output for each step
         for i in range(steps):
-            if GPIO.:
-                pass
+            if GPIO.input(GRP) == True:
+                break
             GPIO.output(self.StepPin,1)
             time.sleep(self.Delay/2)
             GPIO.output(self.StepPin,0)
@@ -73,16 +73,16 @@ class Stepper:
             self.steps += (dir*2-1)         #increment (or decrement) current position
 
     #Move to a defined Position
-    def Move(self, pos):
+    def SafeMove(self, pos):
         if pos != self.steps:       #do nothing if the motor is already at the defined position 
             dir = not (pos < self.steps)            #set direction
-            self.Step(abs(self.steps - pos), dir)   #move the difference between current and determined position
+            self.SafeStep(abs(self.steps - pos), dir)   #move the difference between current and determined position
 
     #Move in the given direction until the end switch is pressed
-    def Home(self,dir):
+    def SafeHome(self,dir):
         if self.EndPin != -1:   #do nothing if no end switch is connected
             #move one step at a time until the end switch is pressed
             while GPIO.input(self.EndPin):
-                self.Step(1,dir)
+                self.SafeStep(1,dir)
 
             self.steps = 0  #set current position to zero
