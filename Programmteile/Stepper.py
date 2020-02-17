@@ -6,7 +6,8 @@ class Stepper:
     steps = 0       #current Position
     StepPin = 0     #GPIO connected to 'STEP' Pin of A4988 driver
     DirPin = 0      #GPIO connected to 'DIR' Pin of A4988 driver
-    EndPin = -1     #GPIO connected to optional end switch (normally closed), -1 if none connected  
+    EndPin = -1     #GPIO connected to optional end switch (normally closed), -1 if none connected
+    GrpPin = -1     #GPIO connected to gripper sense switch 
     Delay = 0       #Delay between steps (in seconds)
 
     #Initialisation:
@@ -17,12 +18,16 @@ class Stepper:
         self.DirPin = Dir
         self.Delay = StepDelay
         self.EndPin = End
+        self.GrpPin = GRP
 
         #Setup GPIOs
         GPIO.setup(self.StepPin, GPIO.OUT)
         GPIO.setup(self.DirPin, GPIO.OUT)
-        if self.EndPin != -1:   #only setup GPIO or Endswitch if one is connected
-            GPIO.setup(self.EndPin, GPIO.IN)
+        if self.EndPin != -1:   #only setup GPIO for Endswitch if one is connected
+            GPIO.setup(self.EndPin, GPIO.IN)        
+        
+        if self.GrpPin != -1:   #only setup GPIO for Gripper switch if one is connected
+            GPIO.setup(self.GrpPin, GPIO.IN)
 
     #Move a defined number of steps
     def Step(self, steps, dir):
@@ -63,7 +68,7 @@ class Stepper:
 
         #pulse STEP output for each step
         for i in range(steps):
-            if GPIO.input(GRP) == True:
+            if GPIO.input(self.GrpPin== True:
                 break
             GPIO.output(self.StepPin,1)
             time.sleep(self.Delay/2)
