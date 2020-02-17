@@ -60,6 +60,23 @@ def MoveXY(x,y):	#Moves the carrier to a specific point
 	MovX.join()
 	MovY.join()
 
+def SafeMoveXY(x,y):	#Moves the carrier to a specific point
+	if x == 0:	#whether to use Home() or Move()
+	    MovX = threading.Thread(target = mX.SafeHome, args = (0,))
+	else:
+		MovX = threading.Thread(target = mX.SafeMove, args = (x,))
+
+	if y == 0:	#whether to use Home() or Move()
+	    MovY = threading.Thread(target = mY.SafeHome, args = (0,))
+	else:
+		MovY = threading.Thread(target = mY.SafeMove, args = (y,))
+
+	#Start both threads and wait for them to finish
+	MovX.start()
+	MovY.start()
+	MovX.join()
+	MovY.join()
+
 def Pickup():
     mZ.Move(10)
     mX.Step(5,1)
@@ -109,7 +126,7 @@ def Input(k):
     keyboard.unhook_all()
     while True:
         if GPIO.input(INP) == 0:
-            number = KBinput("Eingabe: ")
+            number = KBinput("Eingabe: ", lcd)
             if number == -1:
                 break
             mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
@@ -131,7 +148,7 @@ def Output():
     keyboard.unhook_all()
     while True:
         if GPIO.input(INP):
-            number = KBinput("Ausgabe: ")
+            number = KBinput("Ausgabe: ", lcd)
             if number == -1:
                 break
             mycursor.execute('SELECT x,y FROM store WHERE contents ='+str(number))
