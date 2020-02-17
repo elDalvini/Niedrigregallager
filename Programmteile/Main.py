@@ -6,18 +6,20 @@ from Stepper import *
 import keyboard
 import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
 from KeyboardInput import *
-#import mysql.connector
+import mysql.connector
 
 #mysql connection:
 mydb = mysql.connector.connect(host = "localhost", user = "sManager", passwd = "root", database = "niedrigregallager")
 mycursor = mydb.cursor()
 
 #GPIO Pins
-XH = 17
-YH = 27
-ZH = 22
-INP = 4
+XH = 17     #x-axis limit switch
+YH = 27     #y-axis limit switch
+ZH = 22     #z-axis limit switch
+INP = 4     #I/O field sense switch
+GRP = 5     #Gripper sense switch
 
+#DIR/STEP pins of all axis
 XDIR = 19
 XSTEP = 26
 YDIR = 6
@@ -29,6 +31,7 @@ ZSTEP = 9
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(INP, GPIO.IN)
+GPIO.setup(GRP, GPIO.IN)
 
 #LCD Object definition
 lcd = lcddriver.lcd()
@@ -156,8 +159,8 @@ hookKeys()
 MoveXY(800, 800)
 
 
-while True:
-    pass
+#while True:
+#    pass
 
 
 
