@@ -123,8 +123,8 @@ def hookKeys():
     keyboard.on_press_key("q", HomeAll)
 
 def Input(k):            
-    keyboard.unhook(Output)
-    keyboard.unhook(Input)
+    #keyboard.unhook(Output)
+    #keyboard.unhook(Input)
     while True:
         if GPIO.input(INP) == 0:
             number = KBinput("Eingabe: ", lcd)
@@ -146,8 +146,8 @@ def Input(k):
 
 
 def Output():
-    keyboard.unhook(Output)
-    keyboard.unhook(Input)
+    #keyboard.unhook(Output)
+    #keyboard.unhook(Input)
     while True:
         if GPIO.input(INP):
             number = KBinput("Ausgabe: ", lcd)
