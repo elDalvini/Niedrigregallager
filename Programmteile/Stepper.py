@@ -10,7 +10,7 @@ class Stepper:
     Delay = 0       #Delay between steps (in seconds)
 
     #Initialisation:
-    def __init__(self, Step, Dir, StepDelay, End = -1):
+    def __init__(self, Step, Dir, StepDelay, End = -1, GRP = -1):
         #store set Values of the Motor:
         self.steps = 0
         self.StepPin = Step
