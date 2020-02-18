@@ -28,6 +28,8 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
                 x += '9'
             elif key == "left":
                 x += '4'
+            elif key == "clear":
+                x += '5'
             elif key == "right":
                 x += '6'
             elif key == "end":
