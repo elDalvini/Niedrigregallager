@@ -20,6 +20,25 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
             if key in ["1","2","3","4","5","6","7","8","9","0"]: #append number keys to result 
                     x += key
 
+            elif key == "home":
+                x += '7'
+            elif key == "up":
+                x += '8'
+            elif key == "page up":
+                x += '9'
+            elif key == "left":
+                x += '4'
+            elif key == "right":
+                x += '6'
+            elif key == "end":
+                x += '1'
+            elif key == 'down':
+                x += '2'
+            elif key == 'page down':
+                x += '3'
+            elif key == 'insert':
+                x += '0'
+
             elif key == "enter":    #breaks loop, returns result
                 lcd.clear()
                 if x != "":
@@ -29,7 +48,7 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
                     lcd.display_string("Zahl eingeben!",2)
                     time.sleep(0.75)
 
-            elif key == "+":        #the '+'-Key is used as backspace --> remove last character from result
+            elif key == "backspace":        #remove last character from result
                 x = x[:-1]
 
             elif key == "num lock":

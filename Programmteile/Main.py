@@ -94,17 +94,17 @@ def ManMove(keypress):
 	key = keypress.name
 	#print(key)
 
-	if key == "up":
+	if key == "w":
 		mX.Step(1,1)
-	elif key == "down":
+	elif key == "s":
 		mX.Step(1,0)
-	elif key == "left":
+	elif key == "a":
 		mY.Step(1,1)
-	elif key == "right":
+	elif key == "d":
 		mY.Step(1,0)
-	elif key == "page up":
+	elif key == "r":
 		mZ.Step(1,1)
-	elif key == "page down":
+	elif key == "f":
 		mZ.Step(1,0)
 
 	#output current position
@@ -112,14 +112,14 @@ def ManMove(keypress):
 
 def hookKeys():
     #attach ManMove to arrow keys
-    keyboard.on_press_key("up", ManMove)
-    keyboard.on_press_key("down", ManMove)
-    keyboard.on_press_key("left", ManMove)
-    keyboard.on_press_key("right", ManMove)
-    keyboard.on_press_key("page up", ManMove)
-    keyboard.on_press_key("page down", ManMove)
-    keyboard.on_press_key("÷", Input)
-    keyboard.on_press_key("×", Output)
+    keyboard.on_press_key("w", ManMove)
+    keyboard.on_press_key("s", ManMove)
+    keyboard.on_press_key("a", ManMove)
+    keyboard.on_press_key("d", ManMove)
+    keyboard.on_press_key("r", ManMove)
+    keyboard.on_press_key("f", ManMove)
+    keyboard.on_press_key("/", Input)
+    keyboard.on_press_key("*", Output)
     keyboard.on_press_key("q", HomeAll)
 
 def Input(k):            
