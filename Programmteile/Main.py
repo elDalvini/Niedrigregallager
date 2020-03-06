@@ -37,8 +37,8 @@ GPIO.setup(GRP, GPIO.IN)
 lcd = lcddriver.lcd()
 
 #Stepper Object definition
-mX = Stepper(XSTEP, XDIR, 0.005, XH, GRP)
-mY = Stepper(YSTEP, YDIR, 0.005, YH, GRP)
+mX = Stepper(XSTEP, XDIR, 0.01, XH, GRP)
+mY = Stepper(YSTEP, YDIR, 0.01, YH, GRP)
 mZ = Stepper(ZSTEP, ZDIR, 0.01, ZH, GRP)
 
 
