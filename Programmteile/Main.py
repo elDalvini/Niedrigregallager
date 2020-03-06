@@ -118,9 +118,9 @@ def hookKeys():
     keyboard.on_press_key("d", ManMove)
     keyboard.on_press_key("r", ManMove)
     keyboard.on_press_key("f", ManMove)
-    keyboard.on_press_key("/", Input)
-    keyboard.on_press_key("*", Output)
-    keyboard.on_press_key("q", HomeAll)
+    #keyboard.on_press_key("/", Input)
+    #keyboard.on_press_key("*", Output)
+    #keyboard.on_press_key("q", HomeAll)
 
 def Input(k):            
     #keyboard.unhook(Output)
