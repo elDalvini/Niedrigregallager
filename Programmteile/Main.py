@@ -174,7 +174,7 @@ def HomeAll(k=True):
 
 HomeAll()
 hookKeys()
-MoveXY(800, 800)
+#MoveXY(800, 800)
 
 
 while True:
