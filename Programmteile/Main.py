@@ -42,10 +42,10 @@ mY = Stepper(YSTEP, YDIR, 0.01, YH, GRP)
 mZ = Stepper(ZSTEP, ZDIR, 0.01, ZH, GRP)
 
 #Status Variables:
-inpR = false
-outR = false
-inpD = false
-outD = false
+inpR = False
+outR = False
+inpD = False
+outD = False
 
 
 def MoveXY(x,y):	#Moves the carrier to a specific point
@@ -77,7 +77,7 @@ def SafeMoveXY(x,y):	#Moves the carrier to a specific point
         else:
             MovY = threading.Thread(target = mY.SafeMove, args = (y,))
 
-	    #Start both threads and wait for them to finish
+	    #Start both threads and wait for them to finish (using threads so both axis can move at the same time)
         MovX.start()
         MovY.start()
         MovX.join()
@@ -89,7 +89,7 @@ def SafeMoveXY(x,y):	#Moves the carrier to a specific point
             pass
 
 
-def Pickup():   #Move Z axis forward, raise Y axis, move Z axis back to pick up a box
+def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis, move Z axis back to pick up a box
     try:
         mZ.MoveUntil(10)
         mX.SafeStep(5,1)
@@ -152,16 +152,16 @@ def hookKeys():
 
 #set state variables if an Input/Output is requested:
 def InputR(k):            
-    inpR = true
+    inpR = True
 
 def OutputR(k):
-    outR = true
+    outR = True
 
 def InputD(k):            
-    inpD = true
+    inpD = True
 
 def OutputD(k):
-    outD = true
+    outD = True
 
 
 
@@ -205,7 +205,7 @@ while True:
                 lcd.display_string("Geben Sie eine Box ein!",1)
                 if keyboard.is_pressed("num lock"):
                     break
-        inpR = false
+        inpR = False
         hookKeys()
 
 
@@ -229,7 +229,7 @@ while True:
                 lcd.display_string("Leeren Sie die Ausgabebox!",1)
                 if keyboard.is_pressed("num lock"):
                     break
-        outR = false
+        outR = False
         hookKeys()
 
 
