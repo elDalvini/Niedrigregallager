@@ -66,32 +66,51 @@ def MoveXY(x,y):	#Moves the carrier to a specific point
 	MovY.join()
 
 def SafeMoveXY(x,y):	#Moves the carrier to a specific point
-	if x == 0:	#whether to use Home() or Move()
-	    MovX = threading.Thread(target = mX.SafeHome, args = (0,))
-	else:
-		MovX = threading.Thread(target = mX.SafeMove, args = (x,))
+    try:
+        if x == 0:	#whether to use Home() or Move()
+            MovX = threading.Thread(target = mX.SafeHome, args = (0,))
+        else:
+            MovX = threading.Thread(target = mX.SafeMove, args = (x,))
 
-	if y == 0:	#whether to use Home() or Move()
-	    MovY = threading.Thread(target = mY.SafeHome, args = (0,))
-	else:
-		MovY = threading.Thread(target = mY.SafeMove, args = (y,))
+        if y == 0:	#whether to use Home() or Move()
+            MovY = threading.Thread(target = mY.SafeHome, args = (0,))
+        else:
+            MovY = threading.Thread(target = mY.SafeMove, args = (y,))
 
-	#Start both threads and wait for them to finish
-	MovX.start()
-	MovY.start()
-	MovX.join()
-	MovY.join()
+	    #Start both threads and wait for them to finish
+        MovX.start()
+        MovY.start()
+        MovX.join()
+        MovY.join()
+    except :
+        lcd.clear()
+        lcd.display_string('ERROR',1)
+        while 1:
+            pass
+
 
 def Pickup():   #Move Z axis forward, raise Y axis, move Z axis back to pick up a box
-    mZ.Move(10)
-    mX.Step(5,1)
-    mZ.Home(0)
+    try:
+        mZ.MoveUntil(10)
+        mX.SafeStep(5,1)
+        mZ.SafeHome(0)
+    except :
+        lcd.clear()
+        lcd.display_string('ERROR',1)
+        while 1:
+            pass
 
 def Place():    #Raise Y axis, move Z axis forward, lower Y axis, move Z axis back to put down a box
-    mX.Step(5,1)
-    mZ.Move(10)
-    mX.Step(5,0)
-    mZ.Home(0)
+    try:
+        mX.SafeStep(5,1)
+        mZ.SafeMove(10)
+        mX.Step(5,0)
+        mZ.Home(0)
+    except :
+        lcd.clear()
+        lcd.display_string('ERROR',1)
+        while 1:
+            pass
 
 #Move all axis manually if w/a/s/d/r/f is pressed
 def ManMove(keypress):
@@ -159,6 +178,7 @@ MoveXY(800, 800)
 
 
 while True:
+    break
     if inpR:
         keyboard.unhook(Output)
         keyboard.unhook(Input)
@@ -169,9 +189,14 @@ while True:
                     break
                 mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
                 coords = mycursor.fetchall()
+                mycursor.execute('SELECT  FROM store WHERE contents = %s',str(coords[0][0]))
+                x = mycursor.fetchall()[0]
+                mycursor.execute('SELECT  FROM store WHERE contents = %s',str(coords[0][1]))
+                y = mycursor.fetchall()[0]
+
                 MoveXY(0,0)
                 Pickup()
-                MoveXY(coords[0][0], coords[0][1])
+                MoveXY(x, y)
                 Place()
                 MoveXY(0,0)
                 break
