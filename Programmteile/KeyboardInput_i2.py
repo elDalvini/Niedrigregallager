@@ -8,6 +8,7 @@ avaliable = False
 
 def KBinput(title, lcd):   #gets a number by keyboard input, live input and title are displayed on the LCD.
     global InputString
+    global avaliable
 
     lcd.display_string(title,1) #write title to first line of LCD
     
@@ -41,14 +42,15 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
             if InputString != "":
                 lcd.clear()
                 keyboard.unhook_all_hotkeys()
-                hookKeys()
                 out = InputString
                 InputString = ""
+                avaliable = False
                 return(out)
             else:
                 lcd.display_string("Bitte gueltige",1)
                 lcd.display_string("Zahl eingeben!",2)
                 time.sleep(0.75)
+                avaliable = False
 
         lcd.clear()
         lcd.display_string(title,1)
