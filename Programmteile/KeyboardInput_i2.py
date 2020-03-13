@@ -37,10 +37,6 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
     keyboard.on_press_key("backspace", InputNumber)
 
     while 1:
-        lcd.clear()
-        lcd.display_string(title,1)
-        lcd.display_string(InputString,2)
-
         if avaliable:
             if InputString != "":
                 lcd.clear()
@@ -53,6 +49,10 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
                 lcd.display_string("Bitte gueltige",1)
                 lcd.display_string("Zahl eingeben!",2)
                 time.sleep(0.75)
+
+        lcd.clear()
+        lcd.display_string(title,1)
+        lcd.display_string(InputString,2)
 
 
 def InputNumber(keypress):
