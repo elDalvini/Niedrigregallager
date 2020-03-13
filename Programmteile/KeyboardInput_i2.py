@@ -7,6 +7,8 @@ InputString = ""
 avaliable = False
 
 def KBinput(title, lcd):   #gets a number by keyboard input, live input and title are displayed on the LCD.
+    global InputString
+
     lcd.display_string(title,1) #write title to first line of LCD
     
     keyboard.unhook_all_hotkeys()
