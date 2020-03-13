@@ -57,6 +57,7 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
 
 def InputNumber(keypress):
     global InputString
+    global avaliable
     key = keypress.name
     if key in ["1","2","3","4","5","6","7","8","9","0"]: #append number keys to result 
         InputString += key
