@@ -118,13 +118,13 @@ def ManMove(keypress):
 
     #step respective axis by one step up or down
 	if key == "w":
-		mX.Step(1,1)
-	elif key == "s":
-		mX.Step(1,0)
-	elif key == "a":
 		mY.Step(1,1)
-	elif key == "d":
+	elif key == "s":
 		mY.Step(1,0)
+	elif key == "a":
+		mX.Step(1,1)
+	elif key == "d":
+		mX.Step(1,0)
 	elif key == "r":
 		mZ.Step(1,1)
 	elif key == "f":
