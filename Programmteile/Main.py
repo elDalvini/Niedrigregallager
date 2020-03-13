@@ -5,7 +5,7 @@ import threading
 from Stepper import *
 import keyboard
 import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
-from KeyboardInput import *
+from KeyboardInput_i2 import *
 import mysql.connector
 
 #mysql connection:
@@ -152,15 +152,19 @@ def hookKeys():
 
 #set state variables if an Input/Output is requested:
 def InputR(k):            
+    global inpR
     inpR = True
 
 def OutputR(k):
+    global outR
     outR = True
 
-def InputD(k):            
+def InputD(k): 
+    global inpD
     inpD = True
 
 def OutputD(k):
+    global outD
     outD = True
 
 
@@ -180,8 +184,8 @@ hookKeys()
 while True:
     break
     if inpR:
-        keyboard.unhook(Output)
-        keyboard.unhook(Input)
+        keyboard.unhook(OutputR)
+        keyboard.unhook(InputR)
         while True:
             if GPIO.input(INP) == 0:
                 number = KBinput("Eingabe: ", lcd)
