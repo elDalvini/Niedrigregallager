@@ -43,7 +43,9 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
             lcd.clear()
             keyboard.unhook_all_hotkeys()
             hookKeys()
-            return(InputString)
+            out = InputString
+            InputString = ""
+            return(out)
 
 
 
