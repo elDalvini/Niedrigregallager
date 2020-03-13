@@ -13,19 +13,19 @@ mydb = mysql.connector.connect(host = "localhost", user = "sManager", passwd = "
 mycursor = mydb.cursor()
 
 #GPIO Pins
-XH = 17     #x-axis limit switch
-YH = 27     #y-axis limit switch
-ZH = 22     #z-axis limit switch
-INP = 4     #I/O field sense switch
-GRP = 5     #Gripper sense switch
+XH = 21     #x-axis limit switch
+YH = 20     #y-axis limit switch
+ZH = 16     #z-axis limit switch
+INP = 8     #I/O field sense switch
+GRP = 7     #Gripper sense switch
 
 #DIR/STEP pins of all axis
 XDIR = 19
 XSTEP = 26
 YDIR = 6
 YSTEP = 13
-ZDIR = 10
-ZSTEP = 9
+ZDIR = 11
+ZSTEP = 5
 
 #GPIO setup
 GPIO.setwarnings(False)
