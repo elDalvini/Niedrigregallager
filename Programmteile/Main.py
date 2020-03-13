@@ -117,17 +117,17 @@ def ManMove(keypress):
 	key = keypress.name #get pressed key
 
     #step respective axis by one step up or down
-	if key == "w":
+	if key == "up":
 		mY.Step(1,1)
-	elif key == "s":
+	elif key == "down":
 		mY.Step(1,0)
-	elif key == "a":
+	elif key == "left":
 		mX.Step(1,1)
-	elif key == "d":
+	elif key == "right":
 		mX.Step(1,0)
-	elif key == "r":
+	elif key == "page up":
 		mZ.Step(1,1)
-	elif key == "f":
+	elif key == "page down":
 		mZ.Step(1,0)
 
 	#output current position
