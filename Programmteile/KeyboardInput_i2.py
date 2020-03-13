@@ -32,9 +32,9 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
     #keyboard.on_press_key("down", InputNumber)
     #keyboard.on_press_key("page down", InputNumber)
     #keyboard.on_press_key("insert", InputNumber)
-    #keyboard.on_press_key("num lock", InputNumber)
-    #keyboard.on_press_key("enter", InputNumber)
-    #keyboard.on_press_key("backspace", InputNumber)
+    keyboard.on_press_key("num lock", InputNumber)
+    keyboard.on_press_key("enter", InputNumber)
+    keyboard.on_press_key("backspace", InputNumber)
 
     while 1:
         lcd.clear()
