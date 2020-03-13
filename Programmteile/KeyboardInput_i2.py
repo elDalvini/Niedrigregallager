@@ -48,29 +48,30 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
 
 
 def InputNumber(keypress):
+    global InputString
     key = keypress.name
     if key in ["1","2","3","4","5","6","7","8","9","0"]: #append number keys to result 
         InputString += key
-    elif key == "home":
-        InputString += '7'
-    elif key == "up":
-        InputString += '8'
-    elif key == "page up":
-        InputString += '9'
-    elif key == "left":
-        InputString += '4'
-    elif key == "clear":
-        InputString += '5'
-    elif key == "right":
-        InputString += '6'
-    elif key == "end":
-        InputString += '1'
-    elif key == 'down':
-        InputString += '2'
-    elif key == 'page down':
-        InputString += '3'
-    elif key == 'insert':
-        InputString += '0'
+    #elif key == "home":
+    #    InputString += '7'
+    #elif key == "up":
+    #    InputString += '8'
+    #elif key == "page up":
+    #    InputString += '9'
+    #elif key == "left":
+    #    InputString += '4'
+    #elif key == "clear":
+    #    InputString += '5'
+    #elif key == "right":
+    #    InputString += '6'
+    #elif key == "end":
+    #    InputString += '1'
+    #elif key == 'down':
+    #    InputString += '2'
+    #elif key == 'page down':
+    #    InputString += '3'
+    #elif key == 'insert':
+    #    InputString += '0'
 
     elif key == "enter":    #breaks loop, returns result
         lcd.clear()
