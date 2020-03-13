@@ -135,16 +135,16 @@ def ManMove(keypress):
 
 def hookKeys():
     #attach ManMove to respective keys
-    keyboard.on_press_key("w", ManMove)
-    keyboard.on_press_key("s", ManMove)
-    keyboard.on_press_key("a", ManMove)
-    keyboard.on_press_key("d", ManMove)
-    keyboard.on_press_key("r", ManMove)
-    keyboard.on_press_key("f", ManMove)
+    keyboard.on_press_key("up", ManMove)
+    keyboard.on_press_key("down", ManMove)
+    keyboard.on_press_key("left", ManMove)
+    keyboard.on_press_key("right", ManMove)
+    keyboard.on_press_key("page up", ManMove)
+    keyboard.on_press_key("page down", ManMove)
 
     #attach Input/Output functions to respective keys
-    keyboard.on_press_key("/", InputR)
-    keyboard.on_press_key("*", OutputR)
+    keyboard.on_press_key("÷", InputR)
+    keyboard.on_press_key("×", OutputR)
 
     #attach HomeAll to q key
     keyboard.on_press_key("q", HomeAll)
