@@ -41,7 +41,7 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
         if avaliable:
             if InputString != "":
                 lcd.clear()
-                keyboard.unhook_all_hotkeys()
+                keyboard.unhook_all()
                 out = InputString
                 InputString = ""
                 avaliable = False
