@@ -37,13 +37,13 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
     while 1:
         lcd.clear()
         lcd.display_string(title,1)
-        lcd.display_string(x,2)
+        lcd.display_string(InputString,2)
 
         if avaliable:
             lcd.clear()
             keyboard.unhook_all_hotkeys()
             hookKeys()
-            return(x)
+            return(InputString)
 
 
 
@@ -86,5 +86,5 @@ def InputNumber(keypress):
         InputString = InputString[:-1]
 
     elif key == "num lock":
-        x = -1
+        InputString = -1
         avaliable = True
