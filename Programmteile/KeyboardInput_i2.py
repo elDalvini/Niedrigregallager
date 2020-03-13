@@ -62,13 +62,8 @@ def InputNumber(keypress):
         InputString += key
 
     elif key == "enter":    #breaks loop, returns result
-        lcd.clear()
-        if InputString != "":
-            avaliable = True
-        else:               #display error if the result is empty
-            lcd.display_string("Bitte gueltige",1)
-            lcd.display_string("Zahl eingeben!",2)
-            time.sleep(0.75)
+        avaliable = True
+
 
     elif key == "backspace":        #remove last character from result
         InputString = InputString[:-1]
