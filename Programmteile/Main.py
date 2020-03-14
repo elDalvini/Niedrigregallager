@@ -182,7 +182,7 @@ hookKeys()
 
 
 while True:
-    break
+    #break
     if inpR:
         keyboard.unhook_all()
         keyboard.unhook_all()
