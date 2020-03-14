@@ -215,7 +215,6 @@ while True:
                 Place()
                 mycursor.execute('UPDATE store SET contents = ' + str(number) + ' WHERE x = ' + str(coords[0][0]) + ' AND y = ' + str(coords[0][1]))
                 mydb.commit()
-
                 MoveXY(0,0)
                 break
             else:
