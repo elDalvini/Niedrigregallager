@@ -82,7 +82,7 @@ class Stepper:
 
         #pulse STEP output for each step
         for i in range(steps):
-            if GPIO.input(self.GrpPin) == TRUE:
+            if GPIO.input(self.GrpPin) == True:
                 break
             GPIO.output(self.StepPin,1)
             time.sleep(self.Delay/2)
