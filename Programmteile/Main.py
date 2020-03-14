@@ -97,7 +97,7 @@ def SafeMoveXY(x,y):	#Moves the carrier to a specific point
 
 def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis, move Z axis back to pick up a box
     try:
-        mZ.MoveUntil(ZP)
+        mZ.Move(ZP)
         mY.SafeStep(IOHop,1)
         mZ.SafeHome(0)
     except :
