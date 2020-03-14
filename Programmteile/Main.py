@@ -213,7 +213,7 @@ while True:
                 Pickup()
                 MoveXY(x, y)
                 Place()
-                mycursor.execute('UPDATE store SET contents = ' + str(number) + ' WHERE x = ' + str(x) + ' AND y = ' + str(y))
+                mycursor.execute('UPDATE store SET contents = ' + str(number) + ' WHERE x = ' + str(coords[0][1]) + ' AND y = ' + str(coords[0][0]))
                 mydb.commit()
                 MoveXY(0,0)
                 break
