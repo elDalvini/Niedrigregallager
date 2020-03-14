@@ -109,7 +109,7 @@ def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis
 def Place():    #Raise Y axis, move Z axis forward, lower Y axis, move Z axis back to put down a box
     try:
         mY.SafeStep(IOHop,1)
-        mZ.SafeMove(ZP)
+        mZ.SafeMove(ZP-50)
         mY.Step(IOHop,0)
         mZ.Home(0)
     except :
