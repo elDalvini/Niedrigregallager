@@ -214,6 +214,7 @@ while True:
                 MoveXY(x, y)
                 Place()
                 mycursor.execute('UPDATE store SET contents = ' + str(number) + ' WHERE x = ' + str(x) + ' AND y = ' + str(y))
+                mydb.commit()
                 MoveXY(0,0)
                 break
             else:
