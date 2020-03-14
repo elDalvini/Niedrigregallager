@@ -10,6 +10,8 @@ class Stepper:
     GrpPin = -1     #GPIO connected to gripper sense switch 
     Delay = 0       #Delay between steps (in seconds)
 
+    lostSteps = 0
+
     #Initialisation:
     def __init__(self, Step, Dir, StepDelay, End = -1, GRP = -1):
         #store set Values of the Motor:
@@ -19,6 +21,7 @@ class Stepper:
         self.Delay = StepDelay
         self.EndPin = End
         self.GrpPin = GRP
+        self.lostSteps = 0
 
         #Setup GPIOs
         GPIO.setup(self.StepPin, GPIO.OUT)
@@ -69,7 +72,13 @@ class Stepper:
         #pulse STEP output for each step
         for i in range(steps):
             if GPIO.input(self.GrpPin) == True:
+                self.lostSteps += 1
+            else:
+                self.lostSteps = 0
+
+            if self.lostSteps > 10:
                 raise RuntimeError
+
             GPIO.output(self.StepPin,1)
             time.sleep(self.Delay/2)
             GPIO.output(self.StepPin,0)

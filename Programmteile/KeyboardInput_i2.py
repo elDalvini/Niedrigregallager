@@ -55,6 +55,7 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
         lcd.clear()
         lcd.display_string(title,1)
         lcd.display_string(InputString,2)
+        time.sleep(0.2)
 
 
 def InputNumber(keypress):
