@@ -101,7 +101,7 @@ class Stepper:
     def MoveUntil(self, pos):
         if pos != self.steps:       #do nothing if the motor is already at the defined position 
             dir = not (pos < self.steps)            #set direction
-            self.SafeStep(abs(self.steps - pos), dir)   #move the difference between current and determined position
+            self.StepUntil(abs(self.steps - pos), dir)   #move the difference between current and determined position
 
     #Move in the given direction until the end switch is pressed
     def SafeHome(self,dir):
