@@ -48,7 +48,7 @@ inpD = False
 outD = False
 
 #Coordinates:
-IOX = 1532
+IOX = 1490
 IOY = 87
 ZP = 638
 IOHop = 77
@@ -110,7 +110,7 @@ def Place():    #Raise Y axis, move Z axis forward, lower Y axis, move Z axis ba
     try:
         mY.SafeStep(IOHop,1)
         mZ.SafeMove(ZP)
-        mX.Step(IOHop,0)
+        mY.Step(IOHop,0)
         mZ.Home(0)
     except :
         lcd.clear()
