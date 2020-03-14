@@ -184,8 +184,8 @@ hookKeys()
 while True:
     #break
     if inpR:
-        keyboard.unhook(OutputR)
-        keyboard.unhook(InputR)
+        keyboard.unhook_all()
+        keyboard.unhook_all()
         while True:
             if GPIO.input(INP) == 0:
                 number = KBinput("Eingabe: ", lcd)
@@ -214,8 +214,8 @@ while True:
 
 
     if outR:
-        keyboard.unhook(Output)
-        keyboard.unhook(Input)
+        keyboard.unhook_all()
+        keyboard.unhook_all()
         while True:
             if GPIO.input(INP):
                 number = KBinput("Ausgabe: ", lcd)
