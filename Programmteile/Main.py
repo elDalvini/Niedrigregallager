@@ -48,7 +48,7 @@ inpD = False
 outD = False
 
 #Coordinates:
-IOX = 1490
+IOX = 1510
 IOY = 87
 ZP = 638
 IOHop = 77
@@ -109,7 +109,7 @@ def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis
 def Place():    #Raise Y axis, move Z axis forward, lower Y axis, move Z axis back to put down a box
     try:
         mY.SafeStep(IOHop,1)
-        mZ.SafeMove(ZP-50)
+        mZ.SafeMove(ZP-30)
         mY.Step(IOHop,0)
         mZ.Home(0)
     except :
