@@ -193,7 +193,7 @@ while True:
         keyboard.unhook_all()
         keyboard.unhook_all()
         while True:
-            if GPIO.input(INP) == 0:
+            if GPIO.input(INP) == True:
                 number = KBinput("Eingabe: ", lcd)
                 if number == -1:
                     break
@@ -223,7 +223,7 @@ while True:
         keyboard.unhook_all()
         keyboard.unhook_all()
         while True:
-            if GPIO.input(INP):
+            if not GPIO.input(INP):
                 number = KBinput("Ausgabe: ", lcd)
                 if number == -1:
                     break
