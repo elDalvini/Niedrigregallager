@@ -193,10 +193,10 @@ while True:
                     break
                 mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
                 coords = mycursor.fetchall()
-                mycursor.execute('SELECT  FROM store WHERE contents = %s',str(coords[0][0]))
-                x = mycursor.fetchall()[0]
-                mycursor.execute('SELECT  FROM store WHERE contents = %s',str(coords[0][1]))
-                y = mycursor.fetchall()[0]
+                mycursor.execute('SELECT coords FROM row WHERE contents = '+str(coords[0][0]))
+                x = mycursor.fetchall()[0][0]
+                mycursor.execute('SELECT coords FROM columns WHERE contents = '+str(coords[0][1]))
+                y = mycursor.fetchall()[0][0]
 
                 MoveXY(0,0)
                 Pickup()
