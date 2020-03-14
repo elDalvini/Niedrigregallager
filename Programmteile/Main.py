@@ -47,6 +47,12 @@ outR = False
 inpD = False
 outD = False
 
+#Coordinates:
+IOX = 1532
+IOY = 87
+ZP = 638
+IOHop = 77
+
 
 def MoveXY(x,y):	#Moves the carrier to a specific point
 	if x == 0:	#whether to use Home() or Move()
@@ -91,8 +97,8 @@ def SafeMoveXY(x,y):	#Moves the carrier to a specific point
 
 def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis, move Z axis back to pick up a box
     try:
-        mZ.MoveUntil(10)
-        mX.SafeStep(5,1)
+        mZ.MoveUntil(ZP)
+        mY.SafeStep(IOHop,1)
         mZ.SafeHome(0)
     except :
         lcd.clear()
@@ -102,9 +108,9 @@ def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis
 
 def Place():    #Raise Y axis, move Z axis forward, lower Y axis, move Z axis back to put down a box
     try:
-        mX.SafeStep(5,1)
-        mZ.SafeMove(10)
-        mX.Step(5,0)
+        mY.SafeStep(IOHop,1)
+        mZ.SafeMove(ZP)
+        mX.Step(IOHop,0)
         mZ.Home(0)
     except :
         lcd.clear()
@@ -198,7 +204,7 @@ while True:
                 mycursor.execute('SELECT coords FROM columns WHERE number = '+str(coords[0][1]))
                 y = mycursor.fetchall()[0][0]
 
-                MoveXY(0,0)
+                MoveXY(IOX,IOY)
                 Pickup()
                 MoveXY(x, y)
                 Place()
