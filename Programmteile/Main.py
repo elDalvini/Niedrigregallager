@@ -199,6 +199,11 @@ while True:
                     break
                 mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
                 coords = mycursor.fetchall()
+                if len(x) == 0:
+                    lcd.display_string('Datenbank voll!',1)
+                    time.sleep(1.5)
+                    lcd.clear()
+                    break
                 mycursor.execute('SELECT coords FROM row WHERE number = '+str(coords[0][0]))
                 y = mycursor.fetchall()[0][0]
                 mycursor.execute('SELECT coords FROM columns WHERE number = '+str(coords[0][1]))
@@ -208,6 +213,7 @@ while True:
                 Pickup()
                 MoveXY(x, y)
                 Place()
+                mycursor.execute('UPDATE store SET contents = ' + str(number) + ' WHERE x = ' + str(x) + ' AND y = ' + str(y))
                 MoveXY(0,0)
                 break
             else:
