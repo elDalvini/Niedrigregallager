@@ -4,9 +4,7 @@ import RPi.GPIO as GPIO
 import time
 import threading
 from Stepper import *
-import keyboard
 import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
-from KeyboardInput_i2 import *
 import mysql.connector
 import subprocess
 
@@ -16,6 +14,9 @@ lcd.display_string('Start...', 1)
 
 while subprocess.Popen('service mysqld status', shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8').find('Active: active') == -1:
     time.sleep(1)
+
+import keyboard
+from KeyboardInput_i2 import *
 
 #mysql connection:
 mydb = mysql.connector.connect(host = "localhost", user = "sManager", passwd = "root", database = "niedrigregallager")
