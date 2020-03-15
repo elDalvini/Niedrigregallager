@@ -205,6 +205,7 @@ while True:
                 number = KBinput("Eingabe: ", lcd)
                 if number == '-1':
                     break
+                lcd.display_string('In Arbeit...',1)
                 mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
                 coords = mycursor.fetchall()
                 if len(coords) == 0:
@@ -224,6 +225,7 @@ while True:
                 mycursor.execute('UPDATE store SET contents = ' + str(number) + ' WHERE x = ' + str(coords[0][0]) + ' AND y = ' + str(coords[0][1]))
                 mydb.commit()
                 MoveXY(0,0)
+                lcd.clear()
                 break
             else:
                 lcd.clear()
@@ -243,6 +245,7 @@ while True:
                 number = KBinput("Ausgabe: ", lcd)
                 if number == '-1':
                     break
+                lcd.display_string('In Arbeit...',1)
                 mycursor.execute('SELECT x,y FROM store WHERE contents ='+str(number))
                 coords = mycursor.fetchall()
                 if len(coords) == 0:
@@ -263,6 +266,7 @@ while True:
                 mycursor.execute('UPDATE store SET contents = -1 WHERE x = ' + str(coords[0][0]) + ' AND y = ' + str(coords[0][1]))
                 mydb.commit()
                 MoveXY(0,0)
+                lcd.clear()
                 break
             else:
                 lcd.clear()
