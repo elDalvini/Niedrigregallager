@@ -195,7 +195,7 @@ while True:
         while True:
             if GPIO.input(INP) == True:
                 number = KBinput("Eingabe: ", lcd)
-                if number == -1:
+                if number == '-1':
                     break
                 mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
                 coords = mycursor.fetchall()
@@ -232,7 +232,7 @@ while True:
         while True:
             if not GPIO.input(INP):
                 number = KBinput("Ausgabe: ", lcd)
-                if number == -1:
+                if number == '-1':
                     break
                 mycursor.execute('SELECT x,y FROM store WHERE contents ='+str(number))
                 coords = mycursor.fetchall()

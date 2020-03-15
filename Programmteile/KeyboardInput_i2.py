@@ -74,5 +74,5 @@ def InputNumber(keypress):
         InputString = InputString[:-1]
 
     elif key == "num lock":
-        InputString = -1
+        InputString = '-1'
         avaliable = True
