@@ -118,7 +118,7 @@ def Place():    #Raise Y axis, move Z axis forward, lower Y axis, move Z axis ba
         while 1:
             pass
 
-#Move all axis manually if w/a/s/d/r/f is pressed
+#Move all axis manually if arrow keys or page up/down are pressed
 def ManMove(keypress):
 	key = keypress.name #get pressed key
 
@@ -236,10 +236,23 @@ while True:
                     break
                 mycursor.execute('SELECT x,y FROM store WHERE contents ='+str(number))
                 coords = mycursor.fetchall()
-                MoveXY(coords[0][0], coords[0][1])
+                if len(coords) == 0:
+                    lcd.display_string('Nicht gefunden!',1)
+                    time.sleep(1.5)
+                    lcd.clear()
+                    break
+                mycursor.execute('SELECT coords FROM row WHERE number = '+str(coords[0][0]))
+                y = mycursor.fetchall()[0][0]
+                mycursor.execute('SELECT coords FROM columns WHERE number = '+str(coords[0][1]))
+                x = mycursor.fetchall()[0][0]
+
+
+                MoveXY(x, y)
                 Pickup()
-                MoveXY(0,0)
+                MoveXY(IOX,IOY)
                 Place()
+                mycursor.execute('UPDATE store SET contents = -1 WHERE x = ' + str(coords[0][0]) + ' AND y = ' + str(coords[0][1]))
+
                 break
             else:
                 lcd.clear()
