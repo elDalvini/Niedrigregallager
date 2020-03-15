@@ -97,6 +97,8 @@ def SafeMoveXY(x,y):	#Moves the carrier to a specific point
     except :
         lcd.clear()
         lcd.display_string('ERROR',1)
+        time.sleep(3)
+        HomeAll()
         while 1:
             pass
 
@@ -109,6 +111,8 @@ def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis
     except :
         lcd.clear()
         lcd.display_string('ERROR',1)
+        time.sleep(3)
+        HomeAll()
         while 1:
             pass
 
@@ -121,6 +125,8 @@ def Place():    #Raise Y axis, move Z axis forward, lower Y axis, move Z axis ba
     except :
         lcd.clear()
         lcd.display_string('ERROR',1)
+        time.sleep(3)
+        HomeAll()
         while 1:
             pass
 
