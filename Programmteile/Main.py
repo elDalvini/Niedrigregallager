@@ -37,9 +37,9 @@ GPIO.setup(GRP, GPIO.IN)
 lcd = lcddriver.lcd()
 
 #Stepper Object definition
-mX = Stepper(XSTEP, XDIR, 0.01, XH, GRP)
-mY = Stepper(YSTEP, YDIR, 0.01, YH, GRP)
-mZ = Stepper(ZSTEP, ZDIR, 0.01, ZH, GRP)
+mX = Stepper(XSTEP, XDIR, 0.005, XH, GRP)
+mY = Stepper(YSTEP, YDIR, 0.005, YH, GRP)
+mZ = Stepper(ZSTEP, ZDIR, 0.005, ZH, GRP)
 
 #Status Variables:
 inpR = False
@@ -252,7 +252,8 @@ while True:
                 MoveXY(IOX,IOY)
                 Place()
                 mycursor.execute('UPDATE store SET contents = -1 WHERE x = ' + str(coords[0][0]) + ' AND y = ' + str(coords[0][1]))
-
+                mydb.commit()
+                MoveXY(0,0)
                 break
             else:
                 lcd.clear()
