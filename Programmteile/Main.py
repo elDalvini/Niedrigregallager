@@ -51,7 +51,7 @@ outD = False
 IOX = 1529
 IOY = 87
 ZP = 638
-IOHop = 77
+IOHop = 150
 
 
 def MoveXY(x,y):	#Moves the carrier to a specific point
@@ -98,7 +98,7 @@ def SafeMoveXY(x,y):	#Moves the carrier to a specific point
 def Pickup():   #Move Z axis forward until sense switch is pressed, raise Y axis, move Z axis back to pick up a box
     try:
         mZ.Move(ZP)
-        mY.SafeStep(IOHop,1)
+        mY.Step(IOHop,1)
         mZ.SafeHome(0)
     except :
         lcd.clear()

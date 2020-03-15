@@ -76,7 +76,7 @@ class Stepper:
             else:
                 self.lostSteps = 0
 
-            if self.lostSteps > 10:
+            if self.lostSteps > 100:
                 raise RuntimeError
 
             GPIO.output(self.StepPin,1)
