@@ -221,6 +221,7 @@ while True:
                 lcd.clear()
                 lcd.display_string("Geben Sie eine Box ein!",1)
                 if keyboard.is_pressed("num lock"):
+                    lcd.clear()
                     break
         inpR = False
         hookKeys()
@@ -259,6 +260,7 @@ while True:
                 lcd.clear()
                 lcd.display_string("Leeren Sie die Ausgabebox!",1)
                 if keyboard.is_pressed("num lock"):
+                    lcd.clear()
                     break
         outR = False
         hookKeys()
