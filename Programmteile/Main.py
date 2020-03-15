@@ -15,7 +15,7 @@ lcd = lcddriver.lcd()
 lcd.display_string('Start...', 1)
 
 while subprocess.Popen('service mysqld status', shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8').find('Active: active') == -1:
-    sleep(1)
+    time.sleep(1)
 
 #mysql connection:
 mydb = mysql.connector.connect(host = "localhost", user = "sManager", passwd = "root", database = "niedrigregallager")
