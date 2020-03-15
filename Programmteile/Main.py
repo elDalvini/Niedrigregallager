@@ -200,7 +200,7 @@ while True:
                 mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
                 coords = mycursor.fetchall()
                 if len(coords) == 0:
-                    lcd.display_string('Datenbank voll!',1)
+                    lcd.display_string('Lager voll!',1)
                     time.sleep(1.5)
                     lcd.clear()
                     break
