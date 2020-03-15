@@ -10,6 +10,10 @@ from KeyboardInput_i2 import *
 import mysql.connector
 import subprocess
 
+#LCD Object definition
+lcd = lcddriver.lcd()
+lcd.display_string('Start...', 1)
+
 while subprocess.Popen('service mysqld status', shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8').find('Active: active') == -1:
     sleep(1)
 
@@ -37,9 +41,6 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(INP, GPIO.IN)
 GPIO.setup(GRP, GPIO.IN)
-
-#LCD Object definition
-lcd = lcddriver.lcd()
 
 #Stepper Object definition
 mX = Stepper(XSTEP, XDIR, 0.005, XH, GRP)
@@ -189,6 +190,8 @@ def HomeAll(k=True):
 
 HomeAll()
 hookKeys()
+
+lcd.clear()
 #MoveXY(800, 800)
 
 
