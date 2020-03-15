@@ -8,6 +8,10 @@ import keyboard
 import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
 from KeyboardInput_i2 import *
 import mysql.connector
+import subprocess
+
+while subprocess.Popen('service mysqld status', shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8').find('Active: active') == -1:
+    sleep(1)
 
 #mysql connection:
 mydb = mysql.connector.connect(host = "localhost", user = "sManager", passwd = "root", database = "niedrigregallager")
