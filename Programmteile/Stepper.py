@@ -1,7 +1,14 @@
+#########################################################################################################################
+# This is a software developent project conducted at DHBW Karlsruhe, 01/2020 - 03/2020.
+# Students: Natalie Keicher -7577073, Martin Graf - 4294471, David Monninger - 1335605
+# 
+# This library handles driving the stepper motors via A4988 driver boards. For further details see Main.py
 
-import RPi.GPIO as GPIO
-import time
+#library imports
+import RPi.GPIO as GPIO     #Raspberry Pi GPIO library
+import time                 #time library for timing the steps sent to the stepper motor driver
 
+#definition of stepper class
 class Stepper:
     steps = 0       #current Position
     StepPin = 0     #GPIO connected to 'STEP' Pin of A4988 driver
@@ -10,7 +17,7 @@ class Stepper:
     GrpPin = -1     #GPIO connected to gripper sense switch 
     Delay = 0       #Delay between steps (in seconds)
 
-    lostSteps = 0
+    lostSteps = 0   #number of censecutive steps with no container at the gripper, only used by the SafeStep/Move/Home methods (see below)
 
     #Initialisation:
     def __init__(self, Step, Dir, StepDelay, End = -1, GRP = -1):
@@ -69,16 +76,18 @@ class Stepper:
     def SafeStep(self, steps, dir):
         GPIO.output(self.DirPin, dir)       #set direction
 
-        #pulse STEP output for each step
         for i in range(steps):
+            #increase lostSteps counter if no container is detected, reset it if there is one detected
             if GPIO.input(self.GrpPin) == True:
                 self.lostSteps += 1
             else:
                 self.lostSteps = 0
 
+            #raise error if the lostSteps counter ecceds 100
             if self.lostSteps > 100:
                 raise RuntimeError
 
+        #pulse STEP output for each step
             GPIO.output(self.StepPin,1)
             time.sleep(self.Delay/2)
             GPIO.output(self.StepPin,0)
@@ -86,20 +95,7 @@ class Stepper:
 
             self.steps += (dir*2-1)         #increment (or decrement) current position    
 
-    def StepUntil(self, steps, dir):
-        GPIO.output(self.DirPin, dir)       #set direction
-
-        #pulse STEP output for each step
-        for i in range(steps):
-            if GPIO.input(self.GrpPin) == False:
-                break
-            GPIO.output(self.StepPin,1)
-            time.sleep(self.Delay/2)
-            GPIO.output(self.StepPin,0)
-            time.sleep(self.Delay/2)
-
-            self.steps += (dir*2-1)         #increment (or decrement) current position
-
+############### all of the methods below are identical to above methods, they just use the SafeStep() method instead of the Step() method #########
     #Move to a defined Position
     def SafeMove(self, pos):
         if pos != self.steps:       #do nothing if the motor is already at the defined position 

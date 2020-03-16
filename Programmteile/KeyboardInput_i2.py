@@ -1,18 +1,26 @@
+
+
+####################################setup, variable definitions etc.######################################################
+
 import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
-import time
-import keyboard
+import time             #time library for various delays in the program
+import keyboard         #keyboard library for numberpad input
 
 #Input variable definition
-InputString = ""
-avaliable = False
+InputString = ""    #typed numbers are stores in this string
+avaliable = False   #state variable to indicate end of input
 
 def KBinput(title, lcd):   #gets a number by keyboard input, live input and title are displayed on the LCD.
+
+    #use global variables:
     global InputString
     global avaliable
 
     lcd.display_string(title,1) #write title to first line of LCD
     
-    keyboard.unhook_all_hotkeys()
+    keyboard.unhook_all_hotkeys()   #stop listening to any previous hotkeys
+
+    #attach InputNumber function to all number keys
     keyboard.on_press_key("0", InputNumber)
     keyboard.on_press_key("1", InputNumber)
     keyboard.on_press_key("2", InputNumber)
@@ -23,35 +31,31 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
     keyboard.on_press_key("7", InputNumber)
     keyboard.on_press_key("8", InputNumber)
     keyboard.on_press_key("9", InputNumber)
-    #keyboard.on_press_key("home", InputNumber)
-    #keyboard.on_press_key("up", InputNumber)
-    #keyboard.on_press_key("page up", InputNumber)
-    #keyboard.on_press_key("left", InputNumber)
-    #keyboard.on_press_key("clear", InputNumber)
-    #keyboard.on_press_key("right", InputNumber)
-    #keyboard.on_press_key("end", InputNumber)
-    #keyboard.on_press_key("down", InputNumber)
-    #keyboard.on_press_key("page down", InputNumber)
-    #keyboard.on_press_key("insert", InputNumber)
     keyboard.on_press_key("num lock", InputNumber)
     keyboard.on_press_key("enter", InputNumber)
     keyboard.on_press_key("backspace", InputNumber)
 
-    while 1:
+    while 1:    #wait for end of input
+
         if avaliable:
-            if InputString != "":
+            if InputString != "":   #a number has been typed
+
                 lcd.clear()
-                keyboard.unhook_all()
-                out = InputString
-                InputString = ""
-                avaliable = False
-                return(out)
-            else:
+                keyboard.unhook_all()   #stop listening to number keys
+                out = InputString       #store input string
+                InputString = ""        #reset InputString variable for next input
+                avaliable = False       #reset state variable
+
+                return(out) #return result, end function
+
+            else:   #no number has been typed
+                #display error message, reset state variable, then continue as before
                 lcd.display_string("Bitte gueltige",1)
                 lcd.display_string("Zahl eingeben!",2)
                 time.sleep(0.75)
                 avaliable = False
 
+        #update LCD with currently typed numbers and title of Input
         lcd.clear()
         if InputString != -1:
             lcd.display_string(title,1)
@@ -59,20 +63,27 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
             time.sleep(0.2)
 
 
-def InputNumber(keypress):
+def InputNumber(keypress):  #function to change InputString if a number key ist pressed
+
+    #use global variables
     global InputString
     global avaliable
-    key = keypress.name
-    if key in ["1","2","3","4","5","6","7","8","9","0"]: #append number keys to result 
+
+    key = keypress.name #get pressed keys
+    
+    #append number keys to result 
+    if key in ["1","2","3","4","5","6","7","8","9","0"]: 
         InputString += key
 
-    elif key == "enter":    #breaks loop, returns result
+    #enter breaks loop, returns result (by setting state variable)
+    elif key == "enter":    
         avaliable = True
 
-
-    elif key == "backspace":        #remove last character from result
+    #backspace removes last character from result
+    elif key == "backspace":        
         InputString = InputString[:-1]
 
+    #num lock --> ESC sets result to -1, returns it
     elif key == "num lock":
         InputString = '-1'
         avaliable = True
