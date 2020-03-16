@@ -1,4 +1,9 @@
 #! /usr/bin/python3
+#########################################################################################################################
+# This is a software developent project conducted at DHBW Karlsruhe, 01/2020 - 03/2020.
+# Students: Natalie Keicher -7577073, Martin Graf - 4294471, David Monninger - 1335605
+# 
+# Object of this project is the building of the model of an automated high-bay warehouse. A 
 
 import RPi.GPIO as GPIO
 import time
@@ -236,7 +241,8 @@ while True:
                 break
             else:
                 lcd.clear()
-                lcd.display_string("Geben Sie eine Box ein!",1)
+                lcd.display_string("Geben Sie eine", 1)
+                lcd.display_string("Box ein!", 2)
                 if keyboard.is_pressed("num lock"):
                     lcd.clear()
                     break
@@ -277,7 +283,8 @@ while True:
                 break
             else:
                 lcd.clear()
-                lcd.display_string("Leeren Sie die Ausgabebox!",1)
+                lcd.display_string("Leeren Sie die",1)
+                lcd.display_string("Ausgabebox!",2)
                 if keyboard.is_pressed("num lock"):
                     lcd.clear()
                     break
