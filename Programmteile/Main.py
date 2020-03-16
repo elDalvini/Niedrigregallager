@@ -52,7 +52,7 @@ GPIO.setup(GRP, GPIO.IN)
 
 #Stepper Object definition
 mX = Stepper(XSTEP, XDIR, 0.005, XH, GRP)
-mY = Stepper(YSTEP, YDIR, 0.005, YH, GRP)
+mY = Stepper(YSTEP, YDIR, 0.01, YH, GRP)
 mZ = Stepper(ZSTEP, ZDIR, 0.005, ZH, GRP)
 
 #Status Variables:
