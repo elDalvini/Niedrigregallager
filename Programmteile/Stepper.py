@@ -1,6 +1,6 @@
 #########################################################################################################################
 # This is a software developent project conducted at DHBW Karlsruhe, 01/2020 - 03/2020.
-# Students: Natalie Keicher -7577073, Martin Graf - 4294471, David Monninger - 1335605
+# Students: Natalie Keicher - 7577073, Martin Graf - 4294471, David Monninger - 1335605
 # 
 # This library handles driving the stepper motors via A4988 driver boards. For further details see Main.py
 
