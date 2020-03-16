@@ -243,6 +243,7 @@ while True:
                 lcd.clear()
                 lcd.display_string("Geben Sie eine", 1)
                 lcd.display_string("Box ein!", 2)
+                time.sleep(0.2)
                 if keyboard.is_pressed("num lock"):
                     lcd.clear()
                     break
@@ -285,6 +286,7 @@ while True:
                 lcd.clear()
                 lcd.display_string("Leeren Sie die",1)
                 lcd.display_string("Ausgabebox!",2)
+                time.sleep(0.2)
                 if keyboard.is_pressed("num lock"):
                     lcd.clear()
                     break
