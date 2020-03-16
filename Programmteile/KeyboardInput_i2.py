@@ -1,7 +1,12 @@
-
+#########################################################################################################################
+# This is a software developent project conducted at DHBW Karlsruhe, 01/2020 - 03/2020.
+# Students: Natalie Keicher -7577073, Martin Graf - 4294471, David Monninger - 1335605
+# 
+# This library handles user input of a number via the number pad, typed numbers are displayed at an LCD. For further details see Main.py
 
 ####################################setup, variable definitions etc.######################################################
 
+#library imports
 import lcddriver        #LCD driver library courtesy of Github user sweetpi, published under GNU General Public license v2.0 at: https://github.com/sweetpi/python-i2c-lcd
 import time             #time library for various delays in the program
 import keyboard         #keyboard library for numberpad input

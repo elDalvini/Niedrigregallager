@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 #########################################################################################################################
 # This is a software developent project conducted at DHBW Karlsruhe, 01/2020 - 03/2020.
-# Students: Natalie Keicher -7577073, Martin Graf - 4294471, David Monninger - 1335605
+# Students: Natalie Keicher - 7577073, Martin Graf - 4294471, David Monninger - 1335605
 # 
 # Subject of this project is building a model of an automated high-bay warehouse. 
 # A gripper driven by 3 NEMA 17 stepper motors can pick up a storage container from a shelf with 16 storage locations. One of these locations
