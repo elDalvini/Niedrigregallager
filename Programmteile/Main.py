@@ -221,7 +221,7 @@ while True:
                     break
                 lcd.display_string('In Arbeit...',1)
                 mycursor.execute('SELECT x,y FROM store WHERE contents ='+str(number))
-                if len(mycursor.fetchall()) == 0:
+                if len(mycursor.fetchall()) != 0:
                     lcd.display_string("Nummer schon",1)
                     lcd.display_string("vorhanden!",2)
                     time.sleep(1.5)
