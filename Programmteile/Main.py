@@ -3,7 +3,9 @@
 # This is a software developent project conducted at DHBW Karlsruhe, 01/2020 - 03/2020.
 # Students: Natalie Keicher -7577073, Martin Graf - 4294471, David Monninger - 1335605
 # 
-# Object of this project is the building of the model of an automated high-bay warehouse. A 
+# Subject of this project is building a model of an automated high-bay warehouse. 
+# A gripper driven by 3 stepper motors can pick up a storage container from a shelf with 16 storage locations. One of these locations
+# is accessible from the front and can be used as the input/output space for the user. 
 
 import RPi.GPIO as GPIO
 import time
@@ -218,6 +220,13 @@ while True:
                 if number == '-1':
                     break
                 lcd.display_string('In Arbeit...',1)
+                mycursor.execute('SELECT x,y FROM store WHERE contents ='+str(number))
+                if len(mycursor.fetchall()) == 0:
+                    lcd.display_string("Nummer schon",1)
+                    lcd.display_string("vorhanden!",2)
+                    time.sleep(1.5)
+                    lcd.clear()
+                    break
                 mycursor.execute('SELECT x,y FROM store WHERE contents = -1')
                 coords = mycursor.fetchall()
                 if len(coords) == 0:
