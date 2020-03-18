@@ -2,7 +2,9 @@
 # This is a software developent project conducted at DHBW Karlsruhe, 01/2020 - 03/2020.
 # Students: Natalie Keicher -7577073, Martin Graf - 4294471, David Monninger - 1335605
 # 
-# This library handles user input of a number via the number pad, typed numbers are displayed at an LCD. For further details see Main.py
+# This library handles user input of a number via the number pad, typed numbers are displayed at an LCD. 
+# For further details about the project see Main.py
+#########################################################################################################################
 
 ####################################setup, variable definitions etc.######################################################
 

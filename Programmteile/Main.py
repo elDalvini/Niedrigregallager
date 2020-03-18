@@ -11,6 +11,8 @@
 # 
 # Everything is controlled by a Rasbperry Pi 3 Model B+ in conjunction with 3 A4988 stepper motor drivers.
 # Managing the current contents of the storage area ist done using an external mySQL database. 
+#########################################################################################################################
+
 
 ####################################setup, variable definitions etc.######################################################
 
