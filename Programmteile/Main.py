@@ -70,7 +70,7 @@ outR = False    #requested output by container number
 
 #Coordinates:
 IOX = 1529      #x-coordinate of input/output location
-IOY = 87        #y-coordinate of input/output location
+IOY = 50        #y-coordinate of input/output location
 ZP = 638        #amount the gripper travels forward to pick up a container
 IOHop = 150     #amount the gripper travels up to pick up a container
 
