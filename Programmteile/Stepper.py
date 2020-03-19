@@ -97,18 +97,12 @@ class Stepper:
 
             self.steps += (dir*2-1)         #increment (or decrement) current position    
 
-############### all of the methods below are identical to above methods, they just use the SafeStep() method instead of the Step() method #########
+############### the methods below are identical to above methods, they just use the SafeStep() method instead of the Step() method #########
     #Move to a defined Position
     def SafeMove(self, pos):
         if pos != self.steps:       #do nothing if the motor is already at the defined position 
             dir = not (pos < self.steps)            #set direction
             self.SafeStep(abs(self.steps - pos), dir)   #move the difference between current and determined position    
-    
-    #Move to a defined Position
-    def MoveUntil(self, pos):
-        if pos != self.steps:       #do nothing if the motor is already at the defined position 
-            dir = not (pos < self.steps)            #set direction
-            self.StepUntil(abs(self.steps - pos), dir)   #move the difference between current and determined position
 
     #Move in the given direction until the end switch is pressed
     def SafeHome(self,dir):
