@@ -15,13 +15,13 @@ import keyboard         #keyboard library for numberpad input
 
 #Input variable definition
 InputString = ""    #typed numbers are stores in this string
-avaliable = False   #state variable to indicate end of input
+available = False   #state variable to indicate end of input
 
 def KBinput(title, lcd):   #gets a number by keyboard input, live input and title are displayed on the LCD.
 
     #use global variables:
     global InputString
-    global avaliable
+    global available
 
     lcd.display_string(title,1) #write title to first line of LCD
     
@@ -44,14 +44,14 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
 
     while 1:    #wait for end of input
 
-        if avaliable:
+        if available:
             if InputString != "":   #a number has been typed
 
                 lcd.clear()
                 keyboard.unhook_all()   #stop listening to number keys
                 out = InputString       #store input string
                 InputString = ""        #reset InputString variable for next input
-                avaliable = False       #reset state variable
+                available = False       #reset state variable
 
                 return(out) #return result, end function
 
@@ -60,7 +60,7 @@ def KBinput(title, lcd):   #gets a number by keyboard input, live input and titl
                 lcd.display_string("Bitte gueltige",1)
                 lcd.display_string("Zahl eingeben!",2)
                 time.sleep(0.75)
-                avaliable = False
+                available = False
 
         #update LCD with currently typed numbers and title of Input
         lcd.clear()
@@ -74,7 +74,7 @@ def InputNumber(keypress):  #function to change InputString if a number key ist 
 
     #use global variables
     global InputString
-    global avaliable
+    global available
 
     key = keypress.name #get pressed keys
     
@@ -84,7 +84,7 @@ def InputNumber(keypress):  #function to change InputString if a number key ist 
 
     #enter breaks loop, returns result (by setting state variable)
     elif key == "enter":    
-        avaliable = True
+        available = True
 
     #backspace removes last character from result
     elif key == "backspace":        
@@ -93,4 +93,4 @@ def InputNumber(keypress):  #function to change InputString if a number key ist 
     #num lock --> ESC sets result to -1, returns it
     elif key == "num lock":
         InputString = '-1'
-        avaliable = True
+        available = True
