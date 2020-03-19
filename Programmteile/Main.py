@@ -266,7 +266,7 @@ while True: #main loop
 
                 MoveXY(IOX,IOY) #move the gripper to the I/O location
                 Pickup()        #Pick up new container
-                MoveXY(x, y)    #move to the next free sorage space
+                SafeMoveXY(x, y)    #move to the next free sorage space
                 Place()         #Place the container there
 
                 #update database with the new container number
@@ -325,7 +325,7 @@ while True: #main loop
 
                 MoveXY(x, y)    #move the gripper to he location of the requested container
                 Pickup()        #pick up this container
-                MoveXY(IOX,IOY) #move the gripper to the I/O location
+                SafeMoveXY(IOX,IOY) #move the gripper to the I/O location
                 Place()         #Place the container there
 
                 #update database, set previous location of the output container to empty
