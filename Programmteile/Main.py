@@ -209,7 +209,7 @@ def OutputR(k):
     outR = True
 
 #function to home all axis
-def HomeAll(k=True):
+def HomeAll(k=True):    #optional  unused input value k to make the function callable by a keyboard hook
     #Home all axis
     mZ.Home(0)
     mX.Home(0)
@@ -280,8 +280,8 @@ while True: #main loop
             else:   #no container is detected in the I/O location
                 #display error until a container is placed there
                 lcd.clear()
-                lcd.display_string("Geben Sie eine", 1)
-                lcd.display_string("Box ein!", 2)
+                lcd.display_string("Geben Sie einen", 1)
+                lcd.display_string("Kasten ein!", 2)
                 time.sleep(0.2)
 
                 #clear display, cancel execution and break loop if "num lock" --> ESC is pressed
@@ -339,8 +339,8 @@ while True: #main loop
             else:   #a container is detected in the I/O location
                 #display error until the container is removed
                 lcd.clear()
-                lcd.display_string("Leeren Sie die",1)
-                lcd.display_string("Ausgabebox!",2)
+                lcd.display_string("Leeren Sie das",1)
+                lcd.display_string("Ausgabefach!",2)
                 time.sleep(0.2)
 
                 #clear display, cancel execution and break loop if "num lock" --> ESC is pressed
